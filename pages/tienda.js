@@ -22,10 +22,18 @@ export default function Tienda({ products, bag, agregarCarrito }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const response = await fetch(`${process.env.API_URL}/productos?populate=imagen`)
     const { data: products } = await response.json()
     return {
         props: { products }
     }
 }
+
+// export async function getServerSideProps() {
+//     const response = await fetch(`${process.env.API_URL}/productos?populate=imagen`)
+//     const { data: products } = await response.json()
+//     return {
+//         props: { products }
+//     }
+// }
